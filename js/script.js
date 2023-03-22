@@ -1,5 +1,8 @@
 window.onload = init;
 var domande = [];
+var risultati = [];
+
+console.log(this);
 
 
 //window.location.href -> info sull'indirizzo attuale del sito e server
@@ -33,6 +36,7 @@ function init(){
 
 function controlla(){
     console.log(this);
+    risultati = [];
     let risposte = document.querySelectorAll("input:checked");
     if(risposte.length == domande.length){
         let contErrate = 0;
@@ -41,12 +45,22 @@ function controlla(){
             if(!domande[risposta.name].risp[risposta.value].corretta){
                 contErrate++;
             }
+            risultati.push({
+                nDomanda:risposta.name,
+                nRisposta:risposta.value
+            });
         }
         alert("Hai sbagliato "+ contErrate+" risposte");
 
     }else{
         alert("Attenzione, non hai risposto a tutte le domande!");
     }
+    console.log(risultati);
+    console.log(JSON.stringify(risultati));
+    let a = document.createElement("a");
+    a.setAttribute("download", "risultati.json");
+    a.href = JSON.stringify(risultati);
+    a.click();
 }
 
 function premuto(evento){

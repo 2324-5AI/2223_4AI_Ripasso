@@ -6,22 +6,22 @@
         {"cod":3, "desc":"Un pc che analizza i file html", "corretta":false}
         ]},
     {"n":1,"testo":"Definizione di SVG", "punti":1.5, "risp":[
-        {"cod":4, "desc":"Un formato di file di testo", "corretta":false},
-        {"cod":5,"desc":"Il nome di un software di grafica", "corretta":false},
-        {"cod":6,"desc":"La sigla dell'organo che vigila sulla privacy informatica", "corretta":false},
-        {"cod":7,"desc":"Un formato vettoriale relativo alle immagini", "corretta":true}
+        {"cod":0, "desc":"Un formato di file di testo", "corretta":false},
+        {"cod":1,"desc":"Il nome di un software di grafica", "corretta":false},
+        {"cod":2,"desc":"La sigla dell'organo che vigila sulla privacy informatica", "corretta":false},
+        {"cod":3,"desc":"Un formato vettoriale relativo alle immagini", "corretta":true}
         ]},
     {"n":2,"testo":"A cosa serve un DBMS?", "punti":3, "risp":[
-        {"cod":8,"desc":"A scrivere file JSON", "corretta":false},
-        {"cod":9,"desc":"A gestire i dati di un database", "corretta":true},
-        {"cod":10,"desc":"A generare un numero RANDOM", "corretta":false},
-        {"cod":11,"desc":"A gestire i dati di una tabella di Excel", "corretta":false}
+        {"cod":0,"desc":"A scrivere file JSON", "corretta":false},
+        {"cod":1,"desc":"A gestire i dati di un database", "corretta":true},
+        {"cod":2,"desc":"A generare un numero RANDOM", "corretta":false},
+        {"cod":3,"desc":"A gestire i dati di una tabella di Excel", "corretta":false}
         ]},
     {"n":3,"testo":"Dove si trova la ALU?", "punti":1.5, "risp":[
-        {"cod":12, "desc":"Nei televisori a tubo catodico", "corretta":false},
-        {"cod":13, "desc":"Nel cibo", "corretta":false},
-        {"cod":14, "desc":"Nello smartphone", "corretta":true},
-        {"cod":15, "desc":"Nei cani", "corretta":false}
+        {"cod":0, "desc":"Nei televisori a tubo catodico", "corretta":false},
+        {"cod":1, "desc":"Nel cibo", "corretta":false},
+        {"cod":2, "desc":"Nello smartphone", "corretta":true},
+        {"cod":3, "desc":"Nei cani", "corretta":false}
         ]}
 
 ]
