@@ -14,24 +14,29 @@ function init(){
     ris.then(async function(dati){
         //Leggiamo i dati della risposta e li convertiamo in json => chiamata asincrona
         domande = await dati.json();
-        let div = document.getElementById("divDomande");
-
-        for(let j in domande){
-            let domanda = document.createElement("div");
-            domanda.innerHTML = domande[j].testo;
-            for(let i in domande[j].risp){
-                let radio = document.createElement("div");
-                radio.innerHTML = `
-                    <input type='radio' value='${domande[j].risp[i].cod}' name='${domande[j].n}' />
-                    ${domande[j].risp[i].desc}<br>
-                    `;
-                domanda.appendChild(radio);
-            }
-            div.appendChild(domanda);
-        }
+        inserisciDomande();
     });
 
     document.getElementById("btnControlla").addEventListener("click", controlla.bind(document.getElementById("btnControlla")));
+}
+
+function inserisciDomande(filtro = null){
+    let div = document.getElementById("divDomande");
+    div.innerHTML="";//Cancello le domande precedenti
+    console.log(filtro);
+    for(let j in domande){
+        let domanda = document.createElement("div");
+        domanda.innerHTML = domande[j].testo;
+        for(let i in domande[j].risp){
+            let radio = document.createElement("div");
+            radio.innerHTML = `
+                <input type='radio' value='${domande[j].risp[i].cod}' name='${domande[j].n}' />
+                ${domande[j].risp[i].desc}<br>
+                `;
+            domanda.appendChild(radio);
+        }
+        div.appendChild(domanda);
+    }
 }
 
 function controlla(){
@@ -59,10 +64,44 @@ function controlla(){
     console.log(JSON.stringify(risultati));
     let a = document.createElement("a");
     a.setAttribute("download", "risultati.json");
-    a.href = JSON.stringify(risultati);
+    a.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(risultati));
     a.click();
+
+    /*
+    METODO 2
+    //Incapsula un file/oggetto/stringa per poterla gestire in maniera più semplice
+    let blob = new Blob([JSON.stringify(risultati)], { type: 'application/json' });
+    let url = URL.createObjectURL(blob); 
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = "risultati.json";
+    a.click();
+    */
 }
 
-function premuto(evento){
+function premuto(evento){//onkeydown
+    //onkeyDown -> premo un tasto
+    //richiamo la funzione che intercetta l'evento onkeydown
+
+    //aggiorna input type text
+
+    //onkeyUp
+    //richiamo la funzione che intercetta l'evento onkeyup
+
     console.log(evento);
+    console.log("onkeydown: " +evento.target.value);
 }
+
+function rilasciato(evento){//onkeyup -> txt già aggiornata
+    console.log(evento);
+    console.log("onkeyup: " +evento.target.value);
+
+    //Leggiamo ciò che è stato scritto nella txt
+    let filtro = evento.target.value;
+
+    //Filtro le domande secondo quanto ho letto
+    inserisciDomande(filtro);
+    
+}
+
+
