@@ -20,22 +20,29 @@ function init(){
     document.getElementById("btnControlla").addEventListener("click", controlla.bind(document.getElementById("btnControlla")));
 }
 
+/**
+ * Inserisce a schermo le domande che soddisfano il filtro
+ * @param {*} filtro Stringa che deve comparire nel
+ *                       testo della domanda per essere visualizzata (default null)
+ */
 function inserisciDomande(filtro = null){
     let div = document.getElementById("divDomande");
     div.innerHTML="";//Cancello le domande precedenti
     console.log(filtro);
     for(let j in domande){
-        let domanda = document.createElement("div");
-        domanda.innerHTML = domande[j].testo;
-        for(let i in domande[j].risp){
-            let radio = document.createElement("div");
-            radio.innerHTML = `
-                <input type='radio' value='${domande[j].risp[i].cod}' name='${domande[j].n}' />
-                ${domande[j].risp[i].desc}<br>
-                `;
-            domanda.appendChild(radio);
+        if(filtro == null || domande[j].testo.toLowerCase().includes(filtro.toLowerCase())){
+            let domanda = document.createElement("div");
+            domanda.innerHTML = domande[j].testo;
+            for(let i in domande[j].risp){
+                let radio = document.createElement("div");
+                radio.innerHTML = `
+                    <input type='radio' value='${domande[j].risp[i].cod}' name='${domande[j].n}' />
+                    ${domande[j].risp[i].desc}<br>
+                    `;
+                domanda.appendChild(radio);
+            }
+            div.appendChild(domanda);
         }
-        div.appendChild(domanda);
     }
 }
 
