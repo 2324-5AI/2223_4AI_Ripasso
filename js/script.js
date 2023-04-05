@@ -84,6 +84,19 @@ function controlla(){
     a.download = "risultati.json";
     a.click();
     */
+
+
+    //CONTATTO IL SERVER E MANDO LE RISPOSTE
+    let promise = fetch(indirizzo + "risposte.php",
+        { 
+            method:'POST',
+            body: JSON.stringify(risultati)            
+    });
+
+    promise.then(async function(risp){
+        let json = await risp.json();
+        alert(json.desc);
+    });
 }
 
 function premuto(evento){//onkeydown
